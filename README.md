@@ -4,14 +4,27 @@
 ## Getting Started
 
 ### Prerequisites
-- Python 3.7.2
-- Docker
+- [direnv](https://direnv.net/)
+- Python >= 3.7
+  - [pyenv](https://github.com/pyenv/pyenv/)
+  - [virtualenv](https://virtualenv.pypa.io/en/latest/)
+- [Docker](https://docker.com/)
 
 ### Installation
+Add this in your `~/.direnvrc`.
 ```bash
-# Setup virtual environments
-pyenv virtualenv 3.7.2 devnews
-pyenv shell devnews
+use_python() {
+  local python_root=$HOME/.pyenv/versions/$1
+  load_prefix "$python_root"
+  layout_python "$python_root/bin/python"
+}
+```
+
+Setup requirements like below:
+```bash
+# Setup and activate virtual environments with pyenv and direnv
+pyenv install 3.7.2
+direnv allow
 
 # Install packages
 pip install -r requirements.txt
