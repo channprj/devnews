@@ -1,5 +1,5 @@
 # Devnews
-> Work in progress...
+- 한국 개발자들을 위한 뉴스/블로그/슬라이드/비디오 공유 사이트
 
 ## Getting Started
 
