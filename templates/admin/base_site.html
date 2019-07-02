@@ -1,0 +1,37 @@
+{% extends "admin_interface:admin/base_site.html" %}
+
+{% load staticfiles %}
+
+{% block extrahead %}
+<style>
+/* overrides style in admin dashboard */
+h1, h2, h3, h4, h5, h6 {
+    font-weight: bold;
+}
+/* branding logo size */
+.admin-interface #header #branding h1 img.logo {
+    max-width: 200px;
+    margin-bottom: 14px;
+}
+/* admin dashboard title */
+#header #branding #site-name {
+    font-weight: bolder;
+}
+#header #branding #site-name a {
+    display: flex;
+}
+#header #branding #site-name span {
+    margin-left: 10px;
+    color: white;
+}
+</style>
+{% endblock %}
+
+{% block branding %}
+<h1 id="site-name">
+    <a href="{% url 'admin:index' %}">
+        <img src="{% static 'img/devnews-logo.png' %}" height="40px" />
+        {% comment %} <span class="site-title">{{ site_title }}</span> {% endcomment %}
+    </a>
+</h1>
+{% endblock %}

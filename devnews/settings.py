@@ -173,7 +173,7 @@ ADMIN_MEDIA_URL = '/media/admin/'
 
 # AUTH_USER_MODEL = 'user.DefaultUser'
 LOGIN_URL = '/login'
-LOGIN_REDIRECT_URL = '/'
+LOGIN_REDIRECT_URL = '/admin'
 LOGIN_ERROR_URL = '/login'
 LOGOUT_URL = '/logout'
 LOGOUT_REDIRECT_URL = '/login'

@@ -12,12 +12,7 @@ urlpatterns = [
     # path('accounts/', include('django.contrib.auth.urls')), # customizable
     path(
         'login/',
-        auth_views.LoginView.as_view(
-            template_name='admin/login.html',
-            extra_context={
-                'site_header': 'My custom header',
-            },
-        ),
+        auth_views.LoginView.as_view(template_name='admin/login.html',),
         name='login',
     ),
     path(
@@ -28,6 +23,6 @@ urlpatterns = [
     ),
 ]
 
-admin.site.site_title = _('Devnews 관리자 대시보드')
 admin.site.site_header = _('Devnews 관리자 대시보드')
+admin.site.site_title = _('Devnews 관리자 대시보드')
 admin.site.index_title = _('Devnews 관리자 대시보드')
