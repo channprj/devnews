@@ -9,8 +9,12 @@ https://docs.djangoproject.com/en/2.2/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/2.2/ref/settings/
 """
-
+# built-in
 import os
+# 3rd-party
+from dotenv import load_dotenv
+
+load_dotenv(verbose=True)
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -104,12 +108,17 @@ WSGI_APPLICATION = 'devnews.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postgresql',
+        'ENGINE': 'django.db.backends.mysql',
         'HOST': os.getenv('DJANGO_DB_HOST') or '127.0.0.1',
-        'PORT': os.getenv('DJANGO_DB_PORT') or '5432',
+        'PORT': os.getenv('DJANGO_DB_PORT') or '3306',
         'NAME': os.getenv('DJANGO_DB_NAME') or 'devnews-db',
         'USER': os.getenv('DJANGO_DB_USERNAME') or 'devnews-user',
         'PASSWORD': os.getenv('DJANGO_DB_PASSWORD') or 'devnews-password',
+        'OPTIONS': {
+            'init_command': "SET sql_mode='STRICT_TRANS_TABLES'",
+            'charset': 'utf8mb4',
+            'use_unicode': True,
+        },
     }
 }
 

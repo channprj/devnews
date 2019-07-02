@@ -20,6 +20,11 @@ use_python() {
 }
 ```
 
+Add `eval "$(direnv hook zsh)"` in your run commands.
+```bash
+echo 'eval "$(direnv hook zsh)"' >> ~/.zshrc # or .bashrc
+```
+
 Setup requirements like below:
 ```bash
 # Setup and activate virtual environments with pyenv and direnv
@@ -29,11 +34,14 @@ direnv allow
 # Install packages
 pip install -r requirements.txt
 
-# Deploy postgresql for dev
-docker run --name devnews-postgres -p 5432:5432 -e POSTGRES_DB=devnews-db -e POSTGRES_USER=devnews-user -e POSTGRES_PASSWORD=devnews-password -e POSTGRES_INITDB_ARGS=--encoding=UTF-8 -d postgres
+# Deploy mysql for dev
+docker run --name devnews-db -p 3306:3306 -e MYSQL_ROOT_PASSWORD=root -e MYSQL_DATABASE=devnews-db -e MYSQL_USER=devnews-user -e MYSQL_PASSWORD=devnews-password -d mariadb
 
 # Optional: Connect db shell
-psql --host localhost dbname=devnews-db --username devnews-user
+mysql -h0 -udevnews-user -pdevnews-password devnews-db
+
+# Optional: Change default admin theme - uswds
+./manage.py loaddata admin_interface_theme_uswds.json
 
 # Run in local
 ./manage.py runserver 0:8000
