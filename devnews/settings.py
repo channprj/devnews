@@ -63,6 +63,7 @@ THIRD_PARTY_APPS = (
 LOCAL_APPS = (
     # 'api',
     'users',
+    'links',
 
     # sentry raven
     # 'raven.contrib.django.raven_compat',
