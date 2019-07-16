@@ -11,7 +11,8 @@ https://docs.djangoproject.com/en/2.2/ref/settings/
 """
 # built-in
 import os
-# 3rd-party
+
+# third-party
 from dotenv import load_dotenv
 
 load_dotenv(verbose=True)
@@ -36,9 +37,6 @@ if DEBUG:
     ALLOWED_HOSTS = ['*']  # in dev
 else:
     ALLOWED_HOSTS = [ # in prod
-        'localhost',
-        '127.0.0.1',
-        '[::1]',
         'devnews.kr',
     ]
 
@@ -59,6 +57,7 @@ THIRD_PARTY_APPS = (
     'rest_framework',
     'admin_interface',
     'colorfield',
+    'taggit',
 )
 
 LOCAL_APPS = (
@@ -180,6 +179,7 @@ LOGOUT_REDIRECT_URL = '/login'
 
 # third-party options
 IMPORT_EXPORT_USE_TRANSACTIONS = True
+TAGGIT_CASE_INSENSITIVE = True
 
 REST_FRAMEWORK = {
     'DEFAULT_PERMISSION_CLASSES': (
