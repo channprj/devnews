@@ -1,9 +1,9 @@
-Django<2.3
 django-admin-interface==0.10.5
 django-colorfield==0.1.15
 django-extensions==2.1.9
 django-flat-theme==1.1.4
 django-taggit==1.1.0
+Django<2.3
 djangorestframework==3.9.4
 mysqlclient==1.4.2.post1
 pylint==2.3.1

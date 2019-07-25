@@ -36,10 +36,9 @@ DEBUG = os.getenv('DJANGO_DEBUG') or True
 if DEBUG:
     ALLOWED_HOSTS = ['*']  # in dev
 else:
-    ALLOWED_HOSTS = [ # in prod
+    ALLOWED_HOSTS = [  # in prod
         'devnews.kr',
     ]
-
 
 # Application definition
 DJANGO_APPS = (
@@ -80,7 +79,6 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 
-    # third-party
 ]
 
 ROOT_URLCONF = 'devnews.urls'
@@ -147,15 +145,10 @@ AUTH_PASSWORD_VALIDATORS = [
 # https://docs.djangoproject.com/en/2.2/topics/i18n/
 
 LANGUAGE_CODE = 'ko-kr'
-
 TIME_ZONE = 'Asia/Seoul'
-
 USE_I18N = True
-
 USE_L10N = True
-
 USE_TZ = True
-
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/2.2/howto/static-files/
