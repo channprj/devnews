@@ -34,6 +34,7 @@ urlpatterns = [
     path('api-auth/', include('rest_framework.urls')),
     path('check/', health_check, name='health_check'),
     path('users/', include('users.urls')),
+    path('links/', include('links.urls')),
 ]
 
 admin.site.site_header = _('Devnews 관리자 대시보드')

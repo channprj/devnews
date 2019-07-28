@@ -33,7 +33,7 @@ def health_check(request):
 
 
 @api_view(['get', 'patch'])
-@permission_classes((permissions.IsAuthenticatedOrReadOnly, custom_permission.UserIsOwnerOrReadOnly,))
+@permission_classes((permissions.IsAuthenticatedOrReadOnly, custom_permission.IsOwnerOrReadOnly,))
 def user_detail(request, username=None):
     data = {}
 
