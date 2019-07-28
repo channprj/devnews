@@ -38,6 +38,7 @@ if DEBUG:
 else:
     ALLOWED_HOSTS = [  # in prod
         'devnews.kr',
+        '.devnews.kr',
     ]
 
 # Application definition

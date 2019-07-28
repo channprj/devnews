@@ -11,14 +11,6 @@ from rest_framework import routers
 
 # views
 from users.views import health_check
-from users.views import UserViewSet
-from users.views import ProfileViewSet
-
-
-router = routers.DefaultRouter()
-router.register(r'users', UserViewSet)
-router.register(r'profile', ProfileViewSet)
-# router.register(r'check', health_check, base_name='health_check')
 
 
 urlpatterns = [
@@ -41,7 +33,8 @@ urlpatterns = [
     # rest_framework
     path('api-auth/', include('rest_framework.urls')),
     path('check/', health_check, name='health_check'),
-] + router.urls
+    path('users/', include('users.urls')),
+]
 
 admin.site.site_header = _('Devnews 관리자 대시보드')
 admin.site.site_title = _('Devnews 관리자 대시보드')

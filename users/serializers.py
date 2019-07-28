@@ -5,7 +5,7 @@ from django.contrib.auth import get_user_model
 from rest_framework import serializers
 
 # models
-from .models import Profile
+from . import models
 
 
 UserModel = get_user_model()
@@ -15,30 +15,30 @@ class UserSerializer(serializers.ModelSerializer):
     class Meta:
         model = UserModel
         fields = (
-            'id',
             'username',
-            'email',
-            'last_login',
+            'is_active',
         )
         read_only_fields = (
-            'last_login',
+            'username',
+            'is_active',
         )
 
 
-class ProfileSerializer(serializers.HyperlinkedModelSerializer):
-    user = UserSerializer(read_only=True)
+class ProfileSerializer(serializers.Serializer):
+    user = UserSerializer(required=False)  # May be an anonymous user.
+    display_name = serializers.CharField(max_length=30)
+    bio = serializers.CharField(max_length=1000)
+    karma = serializers.FloatField()
+    created_at = serializers.DateTimeField()
+    updated_at = serializers.DateTimeField()
 
     class Meta:
-        model = Profile
-        fields = (
-            'user',
-            'display_name',
-            'bio',
-            'karma',
-            'created_at',
-        )
-        read_only_fields = (
-            'user',
-            'karma',
-            'created_at',
-        )
+        model = models.Profile
+        fields = ('bio', 'display_name')
+
+    def update(self, instance, validated_data):
+        instance.display_name = validated_data.get('display_name', instance.display_name)
+        instance.bio = validated_data.get('bio', instance.bio)
+        # instance.set_password(validated_data.get('password', instance.password))
+        instance.save()
+        return instance
